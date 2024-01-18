@@ -1,11 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LocationCard extends StatelessWidget {
   const LocationCard({super.key});
 
-  _callNumber(String number) async {
-    await FlutterPhoneDirectCaller.callNumber(number);
+  Future<void> _checkAndComposeMessage(
+      BuildContext context, String receiverNumber) async {
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Handle denied permission, you can show a dialog or provide instructions to enable it manually.
+        print("Location permission denied");
+        return;
+      }
+    }
+
+    // Permission granted, proceed to compose message
+    await _composeMessageWithReceiver(context, receiverNumber);
+  }
+
+  Future<void> _composeMessageWithReceiver(
+      BuildContext context, String receiverNumber) async {
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+
+    String message = 'My current location is: '
+        'Latitude: ${position.latitude}, Longitude: ${position.longitude}';
+
+    String uri = 'sms:$receiverNumber?body=${Uri.encodeComponent(message)}';
+
+    if (await canLaunch(uri)) {
+      await launch(uri);
+    } else {
+      print('Could not launch messaging app.');
+    }
   }
 
   @override
@@ -16,7 +49,7 @@ class LocationCard extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
-          onTap: () => _callNumber('0705507078'),
+          onTap: () => _checkAndComposeMessage(context, '0705507078'),
           child: Container(
             height: 120,
             width: MediaQuery.of(context).size.width * 0.4,
