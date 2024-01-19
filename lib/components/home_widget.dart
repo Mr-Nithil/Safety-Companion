@@ -9,7 +9,7 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const InkWell(
+    return InkWell(
       child: Column(
         children: [
           SizedBox(

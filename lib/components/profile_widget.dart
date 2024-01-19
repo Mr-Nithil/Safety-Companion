@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:safety_companion/components/user_infomation.dart';
 import 'package:safety_companion/read_data/get_user-name.dart';
 import 'package:safety_companion/screens/home_screen.dart';
 import 'package:safety_companion/screens/login_screen.dart';
-import 'package:safety_companion/user_infomation.dart';
 
 class ProfileWidget extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;

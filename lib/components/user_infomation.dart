@@ -34,8 +34,6 @@ class _UserInformationState extends State<UserInformation> {
 
         var data = snapshot.data!.data() as Map<String, dynamic>;
 
-        var number = data['contact number'];
-
         return SingleChildScrollView(
           child: UserCard(
             data: data,
@@ -77,7 +75,8 @@ class UserCard extends StatelessWidget {
             buildInfoTile("Email", data['email']),
             buildInfoTile("Birthday", data['birthday']),
             buildInfoTile("Address", data['address']),
-            buildInfoTile("Contact Number", data['contact number']),
+            buildInfoTile(
+                "Emergency Contact Number", data['emergency contact number']),
           ],
         ),
       ),

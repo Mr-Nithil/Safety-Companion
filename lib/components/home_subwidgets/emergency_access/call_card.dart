@@ -1,8 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-class CallCard extends StatelessWidget {
-  const CallCard({super.key});
+class CallCard extends StatefulWidget {
+  const CallCard({super.key, required this.userID});
+  final String userID;
+
+  @override
+  State<CallCard> createState() => _CallCardState();
+}
+
+class _CallCardState extends State<CallCard> {
+  Future<String> _getContactNumber() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(widget.userID)
+        .get();
+
+    dynamic data = snapshot.data();
+    return data != null ? data['emergency contact number'] as String : '';
+  }
 
   _callNumber(String number) async {
     await FlutterPhoneDirectCaller.callNumber(number);
@@ -16,7 +33,10 @@ class CallCard extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
-          onTap: () => _callNumber('0705507078'),
+          onTap: () async {
+            String contactNumber = await _getContactNumber();
+            _callNumber(contactNumber);
+          },
           child: Container(
             height: 120,
             width: MediaQuery.of(context).size.width * 0.4,

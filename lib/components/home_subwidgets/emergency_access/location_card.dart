@@ -1,10 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class LocationCard extends StatelessWidget {
-  const LocationCard({super.key});
+class LocationCard extends StatefulWidget {
+  const LocationCard({super.key, required this.userID});
+  final String userID;
+
+  @override
+  State<LocationCard> createState() => _LocationCardState();
+}
+
+class _LocationCardState extends State<LocationCard> {
+  Future<String> _getContactNumber() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(widget.userID)
+        .get();
+
+    dynamic data = snapshot.data();
+    return data != null ? data['emergency contact number'] as String : '';
+  }
 
   Future<void> _checkAndComposeMessage(
       BuildContext context, String receiverNumber) async {
@@ -13,13 +30,11 @@ class LocationCard extends StatelessWidget {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Handle denied permission, you can show a dialog or provide instructions to enable it manually.
         print("Location permission denied");
         return;
       }
     }
 
-    // Permission granted, proceed to compose message
     await _composeMessageWithReceiver(context, receiverNumber);
   }
 
@@ -29,8 +44,8 @@ class LocationCard extends StatelessWidget {
       desiredAccuracy: LocationAccuracy.high,
     );
 
-    String message = 'My current location is: '
-        'Latitude: ${position.latitude}, Longitude: ${position.longitude}';
+    String message =
+        ' EMERGENCY SITUATION ! My current location is: https://www.google.com/maps/@${position.latitude},${position.longitude},16z?entry=ttu';
 
     String uri = 'sms:$receiverNumber?body=${Uri.encodeComponent(message)}';
 
@@ -49,7 +64,10 @@ class LocationCard extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
-          onTap: () => _checkAndComposeMessage(context, '0705507078'),
+          onTap: () async {
+            String contactNumber = await _getContactNumber();
+            _checkAndComposeMessage(context, contactNumber);
+          },
           child: Container(
             height: 120,
             width: MediaQuery.of(context).size.width * 0.4,
