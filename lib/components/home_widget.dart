@@ -20,7 +20,7 @@ class HomeWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const SizedBox(height: 12),
+        const SizedBox(height: 20),
         _HomeHeader(isSmallScreen: isSmallScreen),
         const SizedBox(height: _sectionGap),
         const CustomCarouselSlider(),
