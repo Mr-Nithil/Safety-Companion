@@ -63,36 +63,41 @@ class CustomCarouselSlider extends StatelessWidget {
                                       "https://www.nationwide.com/lc/resources/emergency-preparedness/articles/catastrophe-preparation"));
                         }
                       },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            Image.asset(
+                              imageSliders[index],
                               fit: BoxFit.cover,
-                              image: NetworkImage(imageSliders[index]),
-                            )),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              gradient: LinearGradient(colors: [
-                                Colors.black.withOpacity(0.4),
-                                Colors.transparent,
-                              ])),
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(bottom: 8, left: 8),
-                              child: Text(
-                                articleTitle[index],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.05,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  Colors.black.withOpacity(0.45),
+                                  Colors.transparent,
+                                ]),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 8, left: 8),
+                                child: Text(
+                                  articleTitle[index],
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.05,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ),
