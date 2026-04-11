@@ -6,9 +6,9 @@ List<String> articleTitle = [
   "Disaster Preparedness"
 ];
 List<String> imageSliders = [
-  "assets/fire safety.png",
-  "assets/route.jpg",
-  "assets/public-safety.png",
-  "assets/ambulance.png",
-  "assets/logo.png"
+  "assets/1.png",
+  "assets/2.png",
+  "assets/3.png",
+  "assets/4.png",
+  "assets/5.png"
 ];
