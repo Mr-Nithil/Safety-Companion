@@ -65,11 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Color.fromARGB(255, 0, 104, 155), // Dark cyan
                 Color.fromARGB(255, 0, 32, 48),
               ])),*/
-          child: ListView(
-            children: [
-              getSelectedWidget(index: index),
-            ],
-          ),
+          child: getSelectedWidget(index: index),
         )),
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: AppColors.background,
@@ -90,10 +86,14 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget widget;
     switch (index) {
       case 0:
-        widget = ProfileWidget();
+        widget = SingleChildScrollView(
+          child: ProfileWidget(),
+        );
         break;
       case 1:
-        widget = HomeWidget();
+        widget = SingleChildScrollView(
+          child: HomeWidget(),
+        );
         break;
       default:
         widget = SignOutWidget();
