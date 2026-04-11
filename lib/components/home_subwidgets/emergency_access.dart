@@ -18,14 +18,20 @@ class EmergencyAccess extends StatelessWidget {
       );
     }
 
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          CallCard(
-            userID: user.uid,
+          Expanded(
+            child: CallCard(
+              userID: user.uid,
+            ),
           ),
-          LocationCard(
-            userID: user.uid,
+          const SizedBox(width: 12),
+          Expanded(
+            child: LocationCard(
+              userID: user.uid,
+            ),
           ),
         ],
       ),

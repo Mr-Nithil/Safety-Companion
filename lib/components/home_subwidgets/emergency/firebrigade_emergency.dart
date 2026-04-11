@@ -11,7 +11,7 @@ class FirebrigadeEmergency extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10.0, bottom: 5),
+      padding: const EdgeInsets.only(left: 10, right: 4, bottom: 5),
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -19,7 +19,7 @@ class FirebrigadeEmergency extends StatelessWidget {
           onTap: () => _callNumber('0705507078'),
           child: Container(
             height: 180,
-            width: MediaQuery.of(context).size.width * 0.7,
+            width: MediaQuery.of(context).size.width * 0.78,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 gradient: LinearGradient(

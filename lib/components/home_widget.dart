@@ -7,86 +7,53 @@ import 'package:safety_companion/components/home_subwidgets/live_safe.dart';
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
 
+  static const double _sectionGap = 16;
+  static const double _titleGap = 8;
+
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Column(
-        children: [
-          SizedBox(
-            width: 16.0, // Specify width if horizontal space is needed
-            height: 10.0, // Specify height if vertical space is needed
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(height: 10),
+        const CustomCarouselSlider(),
+        const SizedBox(height: _sectionGap),
+        const _SectionTitle(title: 'Quick Emergency Access'),
+        const SizedBox(height: _titleGap),
+        EmergencyAccess(),
+        const SizedBox(height: _sectionGap),
+        const _SectionTitle(title: 'Explore LiveSafe'),
+        const SizedBox(height: _titleGap),
+        const LiveSafe(),
+        const SizedBox(height: _sectionGap),
+        const _SectionTitle(title: 'Emergency Contacts'),
+        const SizedBox(height: _titleGap),
+        const Emergency(),
+        const SizedBox(height: 4),
+      ],
+    );
+  }
+}
+
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-          /*Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(
-                      Icons.security,
-                      color: Color.fromARGB(255, 250, 239, 39),,
-                      size: 25.0,
-                    ),
-                    Text(
-                      " PERSONAL SAFETY COMPANION",
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 250, 239, 39),
-                      ),
-                    ),
-                  ],
-                ),*/
-          CustomCarouselSlider(),
-          /*Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10, left: 15),
-                  child: Text(
-                    textAlign: TextAlign.left,
-                    "Emergency Share",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),*/
-          SizedBox(
-            width: 16.0, // Specify width if horizontal space is needed
-            height: 18.0, // Specify height if vertical space is needed
-          ),
-          EmergencyAccess(),
-          Padding(
-            padding: const EdgeInsets.only(top: 12, bottom: 12, left: 15),
-            child: Text(
-              "Explore LiveSafe",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          LiveSafe(),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 2,
-              bottom: 10,
-              left: 15,
-            ),
-            child: Text(
-              textAlign: TextAlign.left,
-              "Emergency Access",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Emergency(),
-          SizedBox(
-            width: 16.0, // Specify width if horizontal space is needed
-            height: 18.0, // Specify height if vertical space is needed
-          ),
-        ],
+        ),
       ),
     );
   }

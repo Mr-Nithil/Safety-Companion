@@ -13,96 +13,94 @@ class CustomCarouselSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10.0),
-        child: CarouselSlider(
-          options: CarouselOptions(
-            aspectRatio: 2.3,
-            autoPlay: true,
-            enlargeCenterPage: true,
-          ),
-          items: List.generate(
-              imageSliders.length,
-              (index) => Card(
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: CarouselSlider(
+        options: CarouselOptions(
+          aspectRatio: 2.15,
+          viewportFraction: 0.9,
+          autoPlay: true,
+          enlargeCenterPage: true,
+        ),
+        items: List.generate(
+            imageSliders.length,
+            (index) => Card(
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      if (index == 0) {
+                        navigateToRoute(
+                            context,
+                            SafeWebView(
+                                url:
+                                    "https://www.nsc.org/community-safety/safety-topics/emergency-preparedness/fire-safety"));
+                      } else if (index == 1) {
+                        navigateToRoute(
+                            context,
+                            SafeWebView(
+                                url:
+                                    "https://www.worldpackers.com/articles/simple-travel-safety-tips"));
+                      } else if (index == 2) {
+                        navigateToRoute(
+                            context,
+                            SafeWebView(
+                                url:
+                                    "https://www.healthline.com/health/womens-health/self-defense-tips-escape"));
+                      } else if (index == 3) {
+                        navigateToRoute(
+                            context,
+                            SafeWebView(
+                                url:
+                                    "https://www.webmd.com/first-aid/features/tip-sheet-what-to-keep-in-your-first-aid-kit"));
+                      } else {
+                        navigateToRoute(
+                            context,
+                            SafeWebView(
+                                url:
+                                    "https://www.nationwide.com/lc/resources/emergency-preparedness/articles/catastrophe-preparation"));
+                      }
+                    },
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        if (index == 0) {
-                          navigateToRoute(
-                              context,
-                              SafeWebView(
-                                  url:
-                                      "https://www.nsc.org/community-safety/safety-topics/emergency-preparedness/fire-safety"));
-                        } else if (index == 1) {
-                          navigateToRoute(
-                              context,
-                              SafeWebView(
-                                  url:
-                                      "https://www.worldpackers.com/articles/simple-travel-safety-tips"));
-                        } else if (index == 2) {
-                          navigateToRoute(
-                              context,
-                              SafeWebView(
-                                  url:
-                                      "https://www.healthline.com/health/womens-health/self-defense-tips-escape"));
-                        } else if (index == 3) {
-                          navigateToRoute(
-                              context,
-                              SafeWebView(
-                                  url:
-                                      "https://www.webmd.com/first-aid/features/tip-sheet-what-to-keep-in-your-first-aid-kit"));
-                        } else {
-                          navigateToRoute(
-                              context,
-                              SafeWebView(
-                                  url:
-                                      "https://www.nationwide.com/lc/resources/emergency-preparedness/articles/catastrophe-preparation"));
-                        }
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            Image.asset(
-                              imageSliders[index],
-                              fit: BoxFit.cover,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.asset(
+                            imageSliders[index],
+                            fit: BoxFit.cover,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                Colors.black.withOpacity(0.45),
+                                Colors.transparent,
+                              ]),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [
-                                  Colors.black.withOpacity(0.45),
-                                  Colors.transparent,
-                                ]),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(bottom: 8, left: 8),
-                                child: Text(
-                                  articleTitle[index],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.05,
-                                  ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 8, left: 8),
+                              child: Text(
+                                articleTitle[index],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.05,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  )),
-        ),
+                  ),
+                )),
       ),
     );
   }

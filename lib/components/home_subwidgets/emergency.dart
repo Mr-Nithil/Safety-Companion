@@ -9,11 +9,12 @@ class Emergency extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 200,
+      height: 196,
       child: ListView(
         physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 6),
         scrollDirection: Axis.horizontal,
         children: [
           PoliceEmergency(),
