@@ -1,9 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:safety_companion/components/home_subwidgets/custom_carousel_slider.dart';
-import 'package:safety_companion/components/home_subwidgets/emergency_access.dart';
-import 'package:safety_companion/components/home_subwidgets/live_safe.dart';
-import 'package:safety_companion/components/home_subwidgets/emergency.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:safety_companion/components/home_widget.dart';
 import 'package:safety_companion/components/profile_widget.dart';

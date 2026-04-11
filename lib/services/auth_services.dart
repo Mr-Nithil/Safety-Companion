@@ -1,23 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:safety_companion/services/db.dart';
-import 'package:safety_companion/screens/home_screen.dart';
 
 class AuthService {
   var db = Db();
-  Future<void> createUser(data, context) async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  Future<void> createUser(Map<String, dynamic> data, context) async {
+    final credential =
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: data['email'],
       password: data['password'],
     );
 
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: ((context) => const HomeScreen()),
-      ),
-    );
+    final userId = credential.user?.uid;
+    if (userId == null) {
+      throw FirebaseAuthException(
+        code: 'user-not-created',
+        message: 'Unable to create the user account.',
+      );
+    }
 
-    await db.addUser(data, context);
+    await db.addUser(data, userId, context);
   }
 
   String _getFirebaseAuthErrorMessage(FirebaseAuthException e) {

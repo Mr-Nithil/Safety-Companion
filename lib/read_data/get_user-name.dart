@@ -13,12 +13,18 @@ class GetUserName extends StatelessWidget {
     return FutureBuilder<DocumentSnapshot>(
       future: users.doc(documentId).get(),
       builder: ((context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
-          return Text('First Name: ${data['first name']}');
+        if (snapshot.hasError) {
+          return const Text('Unable to load user name');
         }
-        return Text('loading...');
+        if (snapshot.connectionState == ConnectionState.done) {
+          final document = snapshot.data;
+          final data = document?.data() as Map<String, dynamic>?;
+          if (data == null) {
+            return const Text('User not found');
+          }
+          return Text('First Name: ${data['first name'] ?? ''}');
+        }
+        return const Text('loading...');
       }),
     );
   }

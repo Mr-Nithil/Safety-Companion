@@ -1,11 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:safety_companion/read_data/get_user-name.dart';
-import 'package:safety_companion/screens/home_screen.dart';
-import 'package:safety_companion/screens/login_screen.dart';
 
 class SignOutWidget extends StatefulWidget {
   @override
@@ -14,8 +9,6 @@ class SignOutWidget extends StatefulWidget {
 
 class _ProfileWidgetState extends State<SignOutWidget>
     with SingleTickerProviderStateMixin {
-  final user = FirebaseAuth.instance.currentUser!;
-  final userID = FirebaseAuth.instance.currentUser!.uid;
   late final AnimationController _controller;
 
   @override
@@ -31,6 +24,7 @@ class _ProfileWidgetState extends State<SignOutWidget>
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
@@ -80,7 +74,7 @@ class _ProfileWidgetState extends State<SignOutWidget>
                 ),
                 child: Text(
                   textAlign: TextAlign.center,
-                  user.email!,
+                  user?.email ?? 'Signed in user',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -96,7 +90,7 @@ class _ProfileWidgetState extends State<SignOutWidget>
                   FirebaseAuth.instance.signOut();
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color.fromARGB(
+                  backgroundColor: Color.fromARGB(
                       255, 196, 21, 56), // Button background color
                   shape: RoundedRectangleBorder(
                     borderRadius:

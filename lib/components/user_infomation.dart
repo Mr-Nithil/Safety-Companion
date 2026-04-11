@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class UserInformation extends StatefulWidget {
   UserInformation({super.key, required this.userID});
@@ -23,16 +21,19 @@ class _UserInformationState extends State<UserInformation> {
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return const Text('Something went wrong');
         }
         if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
+          return const Text("Document does not exist");
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
-        var data = snapshot.data!.data() as Map<String, dynamic>;
+        final data = snapshot.data?.data() as Map<String, dynamic>?;
+        if (data == null) {
+          return const Text('No profile data available');
+        }
 
         return SingleChildScrollView(
           child: UserCard(
@@ -47,13 +48,11 @@ class _UserInformationState extends State<UserInformation> {
 
 class UserCard extends StatelessWidget {
   const UserCard({super.key, required this.data, required this.userID});
-  final Map data;
+  final Map<String, dynamic> data;
   final String userID;
 
   @override
   Widget build(BuildContext context) {
-    final double cardWidth = MediaQuery.of(context).size.width * 0.8;
-    final double cardheight = MediaQuery.of(context).size.height * 0.8;
     final double iconSize = MediaQuery.of(context).size.width * 0.3;
 
     return Card(

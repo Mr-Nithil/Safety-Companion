@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Db {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  Future<void> addUser(data, context) async {
-    final userID = FirebaseAuth.instance.currentUser!.uid;
+  Future<void> addUser(
+      Map<String, dynamic> data, String userId, context) async {
     await users
-        .doc(userID)
+        .doc(userId)
         .set(data)
         .then((value) => print("User Added"))
         .catchError((error) => {
