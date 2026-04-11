@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safety_companion/utils/app_colors.dart';
 import '../services/auth_services.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -46,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 29, 43, 83),
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -63,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: GoogleFonts.bebasNeue(
                       fontWeight: FontWeight.bold,
                       fontSize: 42,
-                      color: Color.fromARGB(255, 255, 0, 77),
+                      color: AppColors.primaryBlue,
                     ),
                   ),
                   SizedBox(
@@ -72,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Text(
                     "Register below with your details!",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                   SizedBox(
@@ -82,14 +83,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        color: AppColors.fieldBackground,
+                        border: Border.all(color: AppColors.fieldBorder),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: _firstnameController,
+                          style: const TextStyle(color: AppColors.inputText),
+                          cursorColor: AppColors.primaryBlue,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'First Name is required';
@@ -100,6 +103,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "First Name",
+                            hintStyle:
+                                const TextStyle(color: AppColors.hintText),
                           ),
                         ),
                       ),
@@ -112,14 +117,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        color: AppColors.fieldBackground,
+                        border: Border.all(color: AppColors.fieldBorder),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: _lastnameController,
+                          style: const TextStyle(color: AppColors.inputText),
+                          cursorColor: AppColors.primaryBlue,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Last Name is required';
@@ -130,6 +137,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Last Name",
+                            hintStyle:
+                                const TextStyle(color: AppColors.hintText),
                           ),
                         ),
                       ),
@@ -142,14 +151,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        color: AppColors.fieldBackground,
+                        border: Border.all(color: AppColors.fieldBorder),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: _birthdayController,
+                          style: const TextStyle(color: AppColors.inputText),
+                          cursorColor: AppColors.primaryBlue,
                           readOnly: true,
                           onTap: () async {
                             DateTime? selectedDate = await showDatePicker(
@@ -169,6 +180,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Birthday",
+                            hintStyle:
+                                const TextStyle(color: AppColors.hintText),
                           ),
                         ),
                       ),
@@ -181,14 +194,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        color: AppColors.fieldBackground,
+                        border: Border.all(color: AppColors.fieldBorder),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: _addressController,
+                          style: const TextStyle(color: AppColors.inputText),
+                          cursorColor: AppColors.primaryBlue,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Address is required';
@@ -198,6 +213,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Address",
+                            hintStyle:
+                                const TextStyle(color: AppColors.hintText),
                           ),
                         ),
                       ),
@@ -210,14 +227,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        color: AppColors.fieldBackground,
+                        border: Border.all(color: AppColors.fieldBorder),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: _emergencycontactnumberController,
+                          style: const TextStyle(color: AppColors.inputText),
+                          cursorColor: AppColors.primaryBlue,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Contact Number is required';
@@ -231,6 +250,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Emergency Contact Number",
+                            hintStyle:
+                                const TextStyle(color: AppColors.hintText),
                           ),
                         ),
                       ),
@@ -243,16 +264,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          border: Border.all(color: Colors.white),
+                          color: AppColors.fieldBackground,
+                          border: Border.all(color: AppColors.fieldBorder),
                           borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: _emailController,
+                          style: const TextStyle(color: AppColors.inputText),
+                          cursorColor: AppColors.primaryBlue,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Email",
+                            hintStyle:
+                                const TextStyle(color: AppColors.hintText),
                           ),
                         ),
                       ),
@@ -265,8 +290,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        color: AppColors.fieldBackground,
+                        border: Border.all(color: AppColors.fieldBorder),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
@@ -276,15 +301,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           keyboardType: TextInputType.name,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           obscureText: _obscureText,
+                          style: const TextStyle(color: AppColors.inputText),
+                          cursorColor: AppColors.primaryBlue,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Password",
+                            hintStyle:
+                                const TextStyle(color: AppColors.hintText),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscureText
                                     ? Icons.visibility_off
                                     : Icons.visibility,
-                                color: Colors.grey,
+                                color: AppColors.hintText,
                               ),
                               onPressed: () {
                                 setState(() {
@@ -312,10 +341,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 255, 0, 77),
+                            AppColors.primaryBlue,
                           ),
                           foregroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                              MaterialStateProperty.all(AppColors.textPrimary),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -340,7 +369,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       "I'm a user! ",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                       ),
                     ),
                     GestureDetector(
@@ -348,7 +377,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Text(
                         " Login now",
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: AppColors.primaryBlue,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

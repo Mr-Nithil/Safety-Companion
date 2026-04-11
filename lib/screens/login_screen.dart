@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:safety_companion/utils/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -34,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 29, 43, 83),
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Icon(
                   Icons.shield_outlined,
-                  color: Color.fromARGB(255, 255, 0, 77),
+                  color: AppColors.primaryBlue,
                   size: 100,
                 ),
                 Text(
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: GoogleFonts.bebasNeue(
                     fontWeight: FontWeight.bold,
                     fontSize: 42,
-                    color: Color.fromARGB(255, 255, 0, 77),
+                    color: AppColors.primaryBlue,
                   ),
                 ),
                 SizedBox(
@@ -60,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   "Welcome back!",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                   ),
                 ),
                 SizedBox(
@@ -70,16 +71,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
+                        color: AppColors.fieldBackground,
+                        border: Border.all(color: AppColors.fieldBorder),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: _emailController,
+                        style: const TextStyle(color: AppColors.inputText),
+                        cursorColor: AppColors.primaryBlue,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: "Email",
+                          hintStyle: const TextStyle(color: AppColors.hintText),
                         ),
                       ),
                     ),
@@ -92,8 +96,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
+                      color: AppColors.fieldBackground,
+                      border: Border.all(color: AppColors.fieldBorder),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
@@ -103,15 +107,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.name,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         obscureText: _obscureText,
+                        style: const TextStyle(color: AppColors.inputText),
+                        cursorColor: AppColors.primaryBlue,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: "Password",
+                          hintStyle: const TextStyle(color: AppColors.hintText),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: Colors.grey,
+                              color: AppColors.hintText,
                             ),
                             onPressed: () {
                               setState(() {
@@ -134,14 +141,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 0, 77),
+                        color: AppColors.primaryBlue,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
                           child: Text(
                         "Sign In",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),
@@ -157,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     "Don't have an account? ",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                   GestureDetector(
@@ -165,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       " Register now",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: AppColors.primaryBlue,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

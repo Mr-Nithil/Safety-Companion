@@ -4,6 +4,7 @@ import 'package:safety_companion/components/home_subwidgets/live_safe/fuel_stati
 import 'package:safety_companion/components/home_subwidgets/live_safe/hospital.dart';
 import 'package:safety_companion/components/home_subwidgets/live_safe/pharmacy.dart';
 import 'package:safety_companion/components/home_subwidgets/live_safe/police.dart';
+import 'package:safety_companion/utils/app_colors.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,18 +24,40 @@ class LiveSafe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = MediaQuery.of(context).size.width < 360;
+
     return SizedBox(
-      height: 110,
+      height: isSmallScreen ? 156 : 162,
       width: MediaQuery.of(context).size.width,
-      child: ListView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Police(onMapFunction: openMap),
-          Hospital(onMapFunction: openMap),
-          Pharmacy(onMapFunction: openMap),
-          BusStation(onMapFunction: openMap),
-          FuelStation(onMapFunction: openMap),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            child: Text(
+              'Tap a service to open nearby places',
+              style: TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: isSmallScreen ? 12 : 13,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Expanded(
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              scrollDirection: Axis.horizontal,
+              children: [
+                Police(onMapFunction: openMap),
+                Hospital(onMapFunction: openMap),
+                Pharmacy(onMapFunction: openMap),
+                BusStation(onMapFunction: openMap),
+                FuelStation(onMapFunction: openMap),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:safety_companion/auth/main_screen.dart';
+import 'package:safety_companion/utils/app_colors.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -21,7 +22,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        scaffoldBackgroundColor: AppColors.background,
+        colorScheme: const ColorScheme.dark(
+          primary: AppColors.primaryBlue,
+          secondary: AppColors.safeGreen,
+          error: AppColors.emergencyPrimary,
+          surface: AppColors.surface,
+        ),
         useMaterial3: true,
       ),
       home: const MainScreen(),

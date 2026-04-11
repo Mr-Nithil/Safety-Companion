@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:safety_companion/utils/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocationCard extends StatefulWidget {
@@ -74,8 +75,8 @@ class _LocationCardState extends State<LocationCard> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Color.fromARGB(255, 126, 37, 83),
-                    Color.fromARGB(255, 255, 0, 77),
+                    AppColors.primaryBlue,
+                    AppColors.safeGreen,
                   ])),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -86,7 +87,7 @@ class _LocationCardState extends State<LocationCard> {
                 child: Center(
                   child: CircleAvatar(
                     radius: 25,
-                    backgroundColor: Colors.white.withOpacity(0.5),
+                    backgroundColor: AppColors.textPrimary.withOpacity(0.22),
                     child: Image.asset('assets/location.png'),
                   ),
                 ),
@@ -99,7 +100,7 @@ class _LocationCardState extends State<LocationCard> {
                     Center(
                       child: Text('Location',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             fontWeight: FontWeight.bold,
                             fontSize: MediaQuery.of(context).size.width * 0.05,
                           )),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:safety_companion/utils/app_colors.dart';
 
 class AmbulanceEmergency extends StatelessWidget {
   const AmbulanceEmergency({super.key});
@@ -26,8 +27,8 @@ class AmbulanceEmergency extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Color.fromARGB(255, 126, 37, 83),
-                      Color.fromARGB(255, 255, 0, 77),
+                      AppColors.emergencyDark,
+                      AppColors.emergencyPrimary,
                     ])),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -36,7 +37,8 @@ class AmbulanceEmergency extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 25,
-                      backgroundColor: Colors.white.withOpacity(0.5),
+                      backgroundColor:
+                          AppColors.emergencyLight.withOpacity(0.35),
                       child: Image.asset('assets/ambulance.png'),
                     ),
                     Expanded(
@@ -46,14 +48,14 @@ class AmbulanceEmergency extends StatelessWidget {
                         children: [
                           Text('Suwa Sariya',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.textPrimary,
                                 fontWeight: FontWeight.bold,
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.06,
                               )),
                           Text('Dial for Medical emergency',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.textPrimary,
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.045,
                               )),
@@ -61,13 +63,13 @@ class AmbulanceEmergency extends StatelessWidget {
                             height: 30,
                             width: 80,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppColors.fieldBackground,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(
                               child: Text('1-9-9-0',
                                   style: TextStyle(
-                                    color: Colors.red,
+                                    color: AppColors.emergencyPrimary,
                                     fontWeight: FontWeight.bold,
                                     fontSize:
                                         MediaQuery.of(context).size.width *

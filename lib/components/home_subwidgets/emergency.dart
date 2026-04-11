@@ -11,10 +11,10 @@ class Emergency extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 196,
+      height: 202,
       child: ListView(
-        physics: BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 6),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         scrollDirection: Axis.horizontal,
         children: [
           PoliceEmergency(),

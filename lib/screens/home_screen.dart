@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:safety_companion/components/home_widget.dart';
 import 'package:safety_companion/components/profile_widget.dart';
+import 'package:safety_companion/utils/app_colors.dart';
 
 import '../components/home_subwidgets/signout.dart';
 
@@ -13,27 +14,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final items = const [
-    Icon(
-      Icons.person,
-      color: Color.fromARGB(255, 29, 43, 83),
-    ),
-    Icon(
-      Icons.home,
-      color: Color.fromARGB(255, 29, 43, 83),
-    ),
-    Icon(
-      Icons.logout,
-      color: Color.fromARGB(255, 29, 43, 83),
-    ),
-  ];
-
   int index = 1;
+
+  List<Widget> get items => [
+        Icon(
+          Icons.person,
+          color: index == 0 ? AppColors.primaryBlue : AppColors.textSecondary,
+        ),
+        Icon(
+          Icons.home,
+          color: index == 1 ? AppColors.primaryBlue : AppColors.textSecondary,
+        ),
+        Icon(
+          Icons.logout,
+          color: index == 2 ? AppColors.primaryBlue : AppColors.textSecondary,
+        ),
+      ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 29, 43, 83),
+        backgroundColor: AppColors.background,
         /*appBar: AppBar(
           title: Row(
             children: <Widget>[
@@ -71,8 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         )),
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.transparent,
-          color: Color.fromARGB(255, 214, 8, 70),
+          backgroundColor: AppColors.background,
+          color: AppColors.surface,
           height: 60,
           animationDuration: Duration(milliseconds: 300),
           items: items,
