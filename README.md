@@ -8,6 +8,8 @@ Safety Companion is a Flutter-based personal safety application built to provide
 
 The app supports secure account access, one-tap emergency calling, live location sharing through SMS, nearby essential-service discovery, and curated safety-awareness content. It is organized with reusable UI modules and service-driven integrations so core safety actions remain quick, focused, and reliable during urgent situations.
 
+Demo: https://www.linkedin.com/posts/nithil-sheshan-4a3945210_flutter-dart-firebase-activity-7448837171865759745-azzM?utm_source=share&utm_medium=member_desktop&rcm=ACoAADWIVHsBQyvJg7MFpZpjndpUXN6v4s4fnlE
+
 ## Key Features
 
 - Secure sign up and login with Firebase Authentication
