@@ -298,9 +298,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: _passwordController,
-                          keyboardType: TextInputType.name,
+                          keyboardType: TextInputType.visiblePassword,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           obscureText: _obscureText,
+                          textAlignVertical: TextAlignVertical.center,
                           style: const TextStyle(color: AppColors.inputText),
                           cursorColor: AppColors.primaryBlue,
                           decoration: InputDecoration(
@@ -308,6 +309,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             hintText: "Password",
                             hintStyle:
                                 const TextStyle(color: AppColors.hintText),
+                            contentPadding:
+                                const EdgeInsets.symmetric(vertical: 16),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscureText
