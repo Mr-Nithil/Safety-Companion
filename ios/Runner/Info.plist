@@ -45,5 +45,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Safety Companion uses your location to share your current position during emergencies and to show nearby safety services.</string>
 </dict>
 </plist>
