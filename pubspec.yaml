@@ -69,7 +69,7 @@ dependency_overrides:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/public-safety.png"
+  image_path: "assets/logo.png"
 # The following section is specific to Flutter packages.
 flutter:
   # The following line ensures that the Material Icons font is
