@@ -273,6 +273,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: _emailController,
                           style: const TextStyle(color: AppColors.inputText),
                           cursorColor: AppColors.primaryBlue,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email is required';
+                            }
+                            final emailRegex =
+                                RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+ ');
+                            if (!emailRegex.hasMatch(value)) {
+                              return 'Enter a valid email address';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Email",
@@ -304,6 +315,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           textAlignVertical: TextAlignVertical.center,
                           style: const TextStyle(color: AppColors.inputText),
                           cursorColor: AppColors.primaryBlue,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password is required';
+                            }
+                            if (value.length < 6) {
+                              return 'Password must be at least 6 characters';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Password",
