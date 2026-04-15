@@ -17,7 +17,7 @@ class AmbulanceEmergency extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
-          onTap: () => _callNumber('0705507078'),
+          // onTap: () => _callNumber(''),
           child: Container(
             height: 180,
             width: MediaQuery.of(context).size.width * 0.78,

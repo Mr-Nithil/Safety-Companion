@@ -17,7 +17,7 @@ class ArmyEmergency extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
-          onTap: () => _callNumber('0705507078'),
+          //onTap: () => _callNumber(''),
           child: Container(
             height: 180,
             width: MediaQuery.of(context).size.width * 0.78,
@@ -39,21 +39,21 @@ class ArmyEmergency extends StatelessWidget {
                       radius: 25,
                       backgroundColor:
                           AppColors.emergencyLight.withOpacity(0.35),
-                      child: Image.asset('assets/army.png'),
+                      child: Image.asset('assets/disaster.png'),
                     ),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('SL-ARMY',
+                          Text('Disaster Mgt Center',
                               style: TextStyle(
                                 color: AppColors.textPrimary,
                                 fontWeight: FontWeight.bold,
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.06,
                               )),
-                          Text('Emergency Terrorist attacks',
+                          Text('Stay alert, stay safe.',
                               style: TextStyle(
                                 color: AppColors.textPrimary,
                                 fontSize:
@@ -67,7 +67,7 @@ class ArmyEmergency extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(
-                              child: Text('1-7-1-7',
+                              child: Text('1-1-7',
                                   style: TextStyle(
                                     color: AppColors.emergencyPrimary,
                                     fontWeight: FontWeight.bold,

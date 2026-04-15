@@ -17,7 +17,7 @@ class FirebrigadeEmergency extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
-          onTap: () => _callNumber('0705507078'),
+          //onTap: () => _callNumber(''),
           child: Container(
             height: 180,
             width: MediaQuery.of(context).size.width * 0.78,
@@ -67,7 +67,7 @@ class FirebrigadeEmergency extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(
-                              child: Text('1-1-8',
+                              child: Text('1-1-0',
                                   style: TextStyle(
                                     color: AppColors.emergencyPrimary,
                                     fontWeight: FontWeight.bold,
