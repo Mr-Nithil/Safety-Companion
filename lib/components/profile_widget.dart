@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:safety_companion/components/user_infomation.dart';
 import 'package:safety_companion/utils/app_colors.dart';
+import 'package:safety_companion/services/auth_services.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -46,6 +47,7 @@ class ProfileWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // ...existing code for profile and info cards...
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -172,6 +174,50 @@ class ProfileWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
+
+              // Delete Account Button
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                icon: const Icon(Icons.delete_forever),
+                label: const Text('Delete Account & Remove Data'),
+                onPressed: () async {
+                  final confirm = await showDialog<bool>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Delete Account'),
+                      content: const Text(
+                        'Are you sure you want to delete your account? This action cannot be undone.',
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.of(context).pop(false),
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.of(context).pop(true),
+                          child: const Text('Delete'),
+                        ),
+                      ],
+                    ),
+                  );
+                  if (confirm == true) {
+                    try {
+                      await AuthService().deleteAccount(context);
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Error: ${e.toString()}')),
+                      );
+                    }
+                  }
+                },
+              ),
             ],
           ),
         );

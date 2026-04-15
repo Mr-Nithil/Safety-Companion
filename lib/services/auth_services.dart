@@ -1,8 +1,40 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:safety_companion/services/db.dart';
 
 class AuthService {
+  Future<void> deleteAccount(BuildContext context) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      throw FirebaseAuthException(
+        code: 'no-user',
+        message: 'No user is currently signed in.',
+      );
+    }
+    try {
+      // Remove user data from Firestore
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .delete();
+      // Delete user from Firebase Auth
+      await user.delete();
+      // Sign out and navigate to login/start screen
+      await FirebaseAuth.instance.signOut();
+      Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Error'),
+          content: Text('Failed to delete account: ${e.toString()}'),
+        ),
+      );
+      rethrow;
+    }
+  }
+
   var db = Db();
   Future<void> createUser(Map<String, dynamic> data, context) async {
     final credential =
