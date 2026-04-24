@@ -1,0 +1,3 @@
+# Exclude build and web folders from GitHub language stats
+build/* linguist-generated=true
+web/* linguist-generated=true
