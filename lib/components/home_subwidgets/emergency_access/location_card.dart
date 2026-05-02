@@ -67,7 +67,7 @@ class _LocationCardState extends State<LocationCard> {
           _checkAndComposeMessage(context, contactNumber);
         },
         child: Container(
-          height: 120,
+          height: 132,
           width: double.infinity,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
