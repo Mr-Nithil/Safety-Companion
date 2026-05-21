@@ -10,6 +10,8 @@ The app supports secure account access, one-tap emergency calling, live location
 
 Demo: https://www.linkedin.com/posts/nithil-sheshan-4a3945210_flutter-dart-firebase-activity-7448837171865759745-azzM?utm_source=share&utm_medium=member_desktop&rcm=ACoAADWIVHsBQyvJg7MFpZpjndpUXN6v4s4fnlE
 
+Google Play Store: https://play.google.com/store/apps/details?id=com.nithilsheshan.safety_companion&pcampaignid=web_share
+
 ## Key Features
 
 - Secure sign up and login with Firebase Authentication
